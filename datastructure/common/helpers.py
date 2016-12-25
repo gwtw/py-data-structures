@@ -1,4 +1,4 @@
-# py-sorting <http://github.com/gwtw/py-sorting>
+# py-data-structures <http://github.com/gwtw/py-data-structures>
 # Copyright 2016 Daniel Imms <http://www.growingwiththeweb.com>
 # Released under the MIT license <http://github.com/gwtw/py-data-structures/blob/master/LICENSE>
 
