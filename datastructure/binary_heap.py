@@ -10,7 +10,7 @@ class BinaryHeap:
     self.list = []
     self.compare = compare
 
-  def buildHeap(self, keys, values):
+  def buildHeap(self, keys, values=None):
     if values is not None and len(values) != len(keys):
       raise ValueError('Key array must be the same length as value array')
 
@@ -24,7 +24,7 @@ class BinaryHeap:
   def clear(self):
     self.list = []
 
-  def extractMinimun(self):
+  def extractMinimum(self):
     if len(self.list) == 0:
       return None
 
@@ -33,14 +33,13 @@ class BinaryHeap:
 
     min = self.list[0]
     self.list[0] = self.list.pop()
-    self.list[0].i = 0
-    self.heapify(this, 0)
+    self.heapify(0)
     return min
 
   def findMinimum(self):
     return None if self.isEmpty() else self.list[0]
 
-  def insert(self, key, value):
+  def insert(self, key, value=None):
     i = len(self.list)
     node = Node(key, value)
     self.list.append(node)
@@ -61,29 +60,29 @@ class BinaryHeap:
     array = self.list + otherHeap.list
     self.buildHeapFromNodeArray(self, array)
 
-  def heapify(self, heap, i):
+  def heapify(self, i):
     l = self.getLeft(i)
     r = self.getRight(i)
     smallest = i
-    if l < len(heap.list) and heap.compare(heap.list[l].key, heap.list[i].key) < 0:
+    if l < len(self.list) and \
+        self.compare(self.list[l].key, self.list[i].key) < 0:
       smallest = l
-    if r < len(heap.list) and heap.compare(heap.list[r].key, heap.list[smallest].key) < 0:
+    if r < len(self.list) and \
+        self.compare(self.list[r].key, self.list[smallest].key) < 0:
       smallest = r
     if smallest != i:
-      self.swap(heap.list, i, smallest)
-      self.heapify(heap, smallest)
+      self.swap(self.list, i, smallest)
+      self.heapify(smallest)
 
-  def buildHeapFromNodeArray(self, heap, nodeArray):
-    heap.list = nodeArray
-    for i in range(math.floor(len(heap.list) / 2), 0, -1):
-      self.heapify(heap, i)
+  def buildHeapFromNodeArray(self, nodeArray):
+    self.list = nodeArray
+    for i in range(math.floor(len(self.list) / 2), -1, -1):
+      self.heapify(i)
 
   def swap(self, array, a, b):
     temp = array[a]
     array[a] = array[b]
     array[b] = temp
-    array[a].i = a
-    array[b].i = b
 
   def getParent(self, i):
     if i == 0:
