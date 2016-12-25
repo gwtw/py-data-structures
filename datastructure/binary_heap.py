@@ -58,7 +58,7 @@ class BinaryHeap:
 
   def union(self, otherHeap):
     array = self.list + otherHeap.list
-    self.buildHeapFromNodeArray(self, array)
+    self.buildHeapFromNodeArray(array)
 
   def heapify(self, i):
     l = self.getLeft(i)
