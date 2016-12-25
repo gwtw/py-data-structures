@@ -1,4 +1,4 @@
-# py-sorting
+# py-data-structures
 
 [![Build Status](https://travis-ci.org/gwtw/py-data-structures.svg?branch=master)](http://travis-ci.org/gwtw/py-data-structures)
 
